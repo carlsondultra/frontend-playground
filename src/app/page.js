@@ -1,6 +1,10 @@
+'use client'
+import useMousePosition from './utils/useMousePosition'
 import styles from './page.module.scss'
 
 export default function Home() {
+
+  const {x, y} = useMousePosition;
   return (
     <main className={styles.main}>
 
