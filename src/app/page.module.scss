@@ -11,5 +11,23 @@
     font-size: 64px;
     line-height: 66px;
     cursor: default;
+
+    span{
+      color: #ec4e39;
+    }
+
+    p{
+      width: 1000px;
+    }
+  }
+
+  .mask{
+    position: absolute;
+    mask-image: url('../../public/mask.svg');
+    background: #ec4e39;
+    mask-repeat: no-repeat;
+    mask-position: 50%;
+    mask-size: 40px;
+    color: black;
   }
 }

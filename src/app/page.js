@@ -5,11 +5,11 @@ export default function Home() {
     <main className={styles.main}>
 
       <div className={styles.mask}>
-        <p>Testing Mask Text</p>
+        <p>This is Testing Testing Testing Testing Testing Mask Text</p>
       </div>
 
       <div className={styles.body}>
-        <p>Testing Body Text</p>
+        <p>This is Different Different Different Different Different <span>Body</span> Text</p>
       </div>
 
     </main>
