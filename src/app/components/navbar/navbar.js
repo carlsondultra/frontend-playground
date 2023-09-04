@@ -6,6 +6,12 @@ export default function Navbar() {
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/maskeffect">Mask Effect</a></li>
+        <li><a>Placeholder</a></li>
+        <li><a>Placeholder</a></li>
+        <li><a>Placeholder</a></li>
+        <li><a>Placeholder</a></li>
+        <li><a>Placeholder</a></li>
+        <li><a>Placeholder</a></li>
       </ul>
     </div>
   )
