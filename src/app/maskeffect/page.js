@@ -1,7 +1,7 @@
 'use client'
 import useMousePosition from './utils/useMousePosition'
 import './styles.css'
-import styles from '../page.module.scss'
+import styles from './page.module.scss'
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
