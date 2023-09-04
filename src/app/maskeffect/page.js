@@ -4,6 +4,7 @@ import './styles.css'
 import styles from './page.module.scss'
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Navbar from '../components/navbar/navbar';
 
 export default function Home() {
 
@@ -12,6 +13,8 @@ export default function Home() {
   const size = isHovered? 400 : 40; //changing mask size if hovered over text
   return (
     <main className={styles.main}>
+
+      <Navbar />
 
       <motion.div
         className={styles.mask}

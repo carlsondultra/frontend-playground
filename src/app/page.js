@@ -7,8 +7,8 @@ export default function Home() {
     <div>
       <Navbar />
       <div>
-        <p>Welcome to my front-end playground!</p>
-        <p>Click the links to browse front-end techniques i've been playing around with!</p>
+      <p>Welcome to my front-end playground!</p>
+      <p>Click the links to browse front-end techniques i've been playing around with!</p>
     </div>
     </div>
   )
