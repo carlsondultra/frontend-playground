@@ -20,10 +20,13 @@ export default function Home() {
     const plane1 = useRef(null);
     const plane2 = useRef(null);
     const plane3 = useRef(null);
+    const speed = 0.1 //how fast pictures move
 
     const manageMouseMove = (e) => {
         const { movementX, movementY } = e;
-        gsap.set(plane1.current, {x: `+=${movementX}`,y: `+=${movementY}`})
+        gsap.set(plane1.current, {x: `+=${movementX * speed}`,y: `+=${movementY * speed}`})
+        gsap.set(plane2.current, {x: `+=${movementX * speed * 0.5}`,y: `+=${movementY * speed * 0.5}`})
+        gsap.set(plane3.current, {x: `+=${movementX * speed * 0.25}`,y: `+=${movementY * speed * 0.25}`})
     }
 
     return (
