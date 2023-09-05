@@ -8,6 +8,7 @@ import {
     Floating7,
     Floating8
 } from "../imagefloat/data"
+import './styles.css'
 import styles from "./page.module.scss"
 import Image from "next/image"
 
