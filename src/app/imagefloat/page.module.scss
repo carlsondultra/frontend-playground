@@ -4,6 +4,26 @@
     overflow: hidden;
     position: relative;
 
+    .title{
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 18px;
+        h1{
+            font-weight: 400;
+            color: white;
+            margin: 0px;
+            text-align: center;
+        }
+        p{
+            color: grey;
+            margin: 0px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
     .plane{
         width: 100%;
         height: 100%;
