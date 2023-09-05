@@ -1,3 +1,4 @@
+'use client'
 import {
     Floating1,
     Floating2,
@@ -11,13 +12,23 @@ import {
 import './styles.css'
 import styles from "./page.module.scss"
 import Image from "next/image"
-
-
+import { useRef } from 'react';
+import { gsap } from "gsap"
 
 export default function Home() {
-    return(
-        <main className={styles.main}>
-            <div className={styles.plane}>
+
+    const plane1 = useRef(null);
+    const plane2 = useRef(null);
+    const plane3 = useRef(null);
+
+    const manageMouseMove = (e) => {
+        const { movementX, movementY } = e;
+        gsap.set(plane1.current, {x: `+=${movementX}`,y: `+=${movementY}`})
+    }
+
+    return (
+        <main onMouseMove={(e) => {manageMouseMove(e)}} className={styles.main}>
+            <div ref={plane1} className={styles.plane}>
                 <Image
                     alt="image"
                     src={Floating1}
@@ -34,7 +45,7 @@ export default function Home() {
                     width={300}
                 />
             </div>
-            <div className={styles.plane}>
+            <div ref={plane2} className={styles.plane}>
                 <Image
                     alt="image"
                     src={Floating4}
@@ -51,7 +62,7 @@ export default function Home() {
                     width={300}
                 />
             </div>
-            <div className={styles.plane}>
+            <div ref={plane3} className={styles.plane}>
                 <Image
                     alt="image"
                     src={Floating7}
@@ -66,7 +77,7 @@ export default function Home() {
             <div className={styles.title}>
                 <h1>Floating Images Gallery</h1>
                 <p>Created using Next.js and GSAP</p>
-             </div>
+            </div>
         </main>
     )
 }
