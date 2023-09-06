@@ -14,6 +14,7 @@ import styles from "./page.module.scss"
 import Image from "next/image"
 import { useRef } from 'react';
 import { gsap } from "gsap"
+import Navbar from "../components/navbar/navbar"
 
 export default function Home() {
 
@@ -64,6 +65,7 @@ export default function Home() {
 
     return (
         <main onMouseMove={(e) => { manageMouseMove(e) }} className={styles.main}>
+            <Navbar />
             <div ref={plane1} className={styles.plane}>
                 <Image
                     alt="image"
