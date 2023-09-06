@@ -24,6 +24,7 @@ export default function Home() {
     let xForce = 0;
     let yForce = 0;
     let requestAnimationFrameId = null
+    const easing = 0.08;
 
     const manageMouseMove = (e) => {
         const { movementX, movementY } = e;
@@ -35,8 +36,13 @@ export default function Home() {
         }
     }
 
+    //linear interpolation, returns a value between two numbers at a specified midpoint
+    const lerp = (start, end, amount) => start * (1 - amount) + end * amount
+
     //recursive function
     const animate = () => {
+        xForce = lerp(xForce, 0, easing)
+        yForce = lerp(yForce, 0, easing)
         gsap.set(plane1.current, {x: `+=${xForce}`,y: `+=${yForce}`})
         gsap.set(plane2.current, {x: `+=${xForce * 0.5}`,y: `+=${yForce * 0.5}`})
         gsap.set(plane3.current, {x: `+=${xForce * 0.25}`,y: `+=${yForce * 0.25}`})
