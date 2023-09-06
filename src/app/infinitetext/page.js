@@ -1,17 +1,31 @@
 'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
+import './styles.css'
 import { gsap } from 'gsap'
 import { useEffect, useRef } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export default function Home() {
 
     const firstText = useRef(null)
     const secondText = useRef(null)
+    const slider = useRef(null)
     let xPercent = 0;
     let direction = 1; //negative value moves text to the left
 
     useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
+        gsap.to(slider.current, {
+            scrollTrigger: {
+                trigger: document.documentElement,
+                start: 0,
+                end: window.innerHeight,
+                scrub: 0.25,
+                onUpdate: e => direction = e.direction * -1
+            },
+            x: "-=500px",
+        })
         requestAnimationFrame(animation);
     }, [])
 
@@ -25,19 +39,19 @@ export default function Home() {
         }
         gsap.set(firstText.current, {xPercent: xPercent})
         gsap.set(secondText.current, {xPercent: xPercent})
-        xPercent += 0.1 * direction;
         requestAnimationFrame(animation);
+        xPercent += 0.1 * direction;
     }
 
     return (
-        <main>
+        <main className={styles.main}>
             <Image
                 fill={true}
                 src="/imagefloat/floating_5.jpg"
                 alt="image"
             />
             <div className={styles.sliderContainer}>
-                <div className={styles.slider}>
+                <div ref={slider} className={styles.slider}>
                     {/* Repeated paragraphs in order to have infinite effect */}
                     <p ref={firstText}>Created using Next.js and GSAP</p>
                     <p ref={secondText}>Created using Next.js and GSAP</p>
