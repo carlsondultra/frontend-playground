@@ -31,7 +31,7 @@ export default function Home() {
         xForce += movementX * speed;
         yForce += movementY * speed;
 
-        if (!requestAnimationFrameId) {
+        if (requestAnimationFrameId == null) {
             requestAnimationFrameId = requestAnimationFrame(animate);
         }
     }
@@ -46,7 +46,6 @@ export default function Home() {
         gsap.set(plane1.current, { x: `+=${xForce}`, y: `+=${yForce}` })
         gsap.set(plane2.current, { x: `+=${xForce * 0.5}`, y: `+=${yForce * 0.5}` })
         gsap.set(plane3.current, { x: `+=${xForce * 0.25}`, y: `+=${yForce * 0.25}` })
-        requestAnimationFrame(animate)
  
         // cancelling request animation frame
         if (Math.abs(xForce) < 0.01) xForce = 0;
