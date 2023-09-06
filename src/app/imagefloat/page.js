@@ -20,13 +20,27 @@ export default function Home() {
     const plane1 = useRef(null);
     const plane2 = useRef(null);
     const plane3 = useRef(null);
-    const speed = 0.1 //how fast pictures move
+    const speed = 0.01 //how fast pictures move
+    let xForce = 0;
+    let yForce = 0;
+    let requestAnimationFrameId = null
 
     const manageMouseMove = (e) => {
         const { movementX, movementY } = e;
-        gsap.set(plane1.current, {x: `+=${movementX * speed}`,y: `+=${movementY * speed}`})
-        gsap.set(plane2.current, {x: `+=${movementX * speed * 0.5}`,y: `+=${movementY * speed * 0.5}`})
-        gsap.set(plane3.current, {x: `+=${movementX * speed * 0.25}`,y: `+=${movementY * speed * 0.25}`})
+        xForce += movementX * speed;
+        yForce += movementY * speed;
+
+        if(!requestAnimationFrameId){
+            requestAnimationFrameId = requestAnimationFrame(animate);
+        }
+    }
+
+    //recursive function
+    const animate = () => {
+        gsap.set(plane1.current, {x: `+=${xForce}`,y: `+=${yForce}`})
+        gsap.set(plane2.current, {x: `+=${xForce * 0.5}`,y: `+=${yForce * 0.5}`})
+        gsap.set(plane3.current, {x: `+=${xForce * 0.25}`,y: `+=${yForce * 0.25}`})
+        requestAnimationFrame(animate)
     }
 
     return (
