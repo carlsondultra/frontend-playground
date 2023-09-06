@@ -9,7 +9,7 @@ export default function Home() {
     const firstText = useRef(null)
     const secondText = useRef(null)
     let xPercent = 0;
-    let direction = -1;
+    let direction = -1; //negative value moves text to the left
 
     useEffect(() => {
         requestAnimationFrame(animation);
@@ -17,6 +17,9 @@ export default function Home() {
 
     // using gsap to set position of x based on xpercent value
     const animation = () => {
+        if(xPercent <= -100){
+            xPercent = 0;
+        }
         gsap.set(firstText.current, {xPercent: xPercent})
         gsap.set(secondText.current, {xPercent: xPercent})
         xPercent += 0.1 * direction;
