@@ -101,16 +101,16 @@ export default function Home() {
                 />
             </div>
             <div ref={plane3} className={styles.plane}>
-                <Image
+                {/* <Image
                     alt="image"
                     src={Floating7}
                     width={300}
-                />
-                <Image
+                /> */}
+                {/* <Image
                     alt="image"
                     src={Floating8}
                     width={300}
-                />
+                /> */}
             </div>
             <div className={styles.title}>
                 <h1>Floating Images Gallery</h1>
