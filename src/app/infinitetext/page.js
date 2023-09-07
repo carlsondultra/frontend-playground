@@ -55,6 +55,10 @@ export default function Home() {
                 alt="image"
             />
             <div className={styles.sliderContainer}>
+                <div className={styles.title}>
+                    <h1 className={styles.h1}>Infinite Moving Text</h1>
+                    <p className={styles.p}>Created using Next.js and GSAP</p>
+                </div>
                 <div ref={slider} className={styles.slider}>
                     {/* Repeated paragraphs in order to have infinite effect */}
                     <p ref={firstText}>Created using Next.js and GSAP</p>

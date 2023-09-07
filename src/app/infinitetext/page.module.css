@@ -6,6 +6,28 @@
     display: flex;
 }
 
+.title{
+    position: absolute;
+    left: 30%;
+    top: -60%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 18px;
+}
+
+.h1{
+    font-weight: 400;
+    color: black;
+    margin: 0px;
+    text-align: center;
+}
+
+.p{
+    color: white;
+    margin: 0px;
+    text-align: center;
+    margin-top: 10px;
+}
+
 .main img{
     object-fit: cover;
     margin-top: 45px;
