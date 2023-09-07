@@ -5,6 +5,7 @@ import './styles.css'
 import { gsap } from 'gsap'
 import { useEffect, useRef } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Navbar from '../components/navbar/navbar'
 
 export default function Home() {
 
@@ -45,8 +46,11 @@ export default function Home() {
 
     return (
         <main className={styles.main}>
+            <Navbar />
             <Image
                 fill={true}
+                // width={1920}
+                // height={1080}
                 src="/imagefloat/floating_5.jpg"
                 alt="image"
             />

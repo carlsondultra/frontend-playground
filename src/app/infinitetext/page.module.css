@@ -8,6 +8,7 @@
 
 .main img{
     object-fit: cover;
+    margin-top: 45px;
 }
 
 .sliderContainer{
