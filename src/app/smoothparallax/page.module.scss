@@ -6,6 +6,7 @@
     gap: 2vw;
     padding: 2vw;
     box-sizing: border-box;
+    overflow: hidden;
     .column{
         width: 25%;
         height: 100%;
@@ -24,4 +25,8 @@
             }
         }
     }
+}
+
+.spacer{
+    height: 100vh;
 }
