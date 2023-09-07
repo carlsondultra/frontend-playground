@@ -4,6 +4,7 @@ import styles from "./page.module.scss"
 import { useTransform, useScroll, motion } from "framer-motion"
 import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
+import useDimension from "./useDimension";
 
 
 const images = [
@@ -24,12 +25,18 @@ const images = [
 export default function Home() {
 
     const container = useRef(null);
+    const { height } = useDimension();
     const { scrollYProgress } = useScroll({
         target: container,
         offset: ['start end', 'end start']
     })
 
-    const y = useTransform(scrollYProgress, [0, 1], [0, 1000])
+
+    const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]) //multiplier changes speed and direction 
+    const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3])
+    const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25])
+    const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3])
+
 
     //using lenis for smooth scroll
     useEffect(() => {
@@ -49,9 +56,9 @@ export default function Home() {
             <div ref={container} className={styles.gallery}>
                 {/* creating 4 columns with 3 images inside of them */}
                 <Column images={[images[0], images[1], images[2]]} y={y}/>
-                <Column images={[images[3], images[4], images[5]]}/>
-                <Column images={[images[6], images[7], images[8]]}/>
-                <Column images={[images[9], images[10], images[11]]}/>
+                <Column images={[images[3], images[4], images[5]]} y={y2}/>
+                <Column images={[images[6], images[7], images[8]]} y={y3}/>
+                <Column images={[images[9], images[10], images[11]]} y={y4}/>
             </div> 
             <div className={styles.spacer}></div>
         </main>
