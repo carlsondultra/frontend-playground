@@ -2,7 +2,8 @@
 import Image from "next/image"
 import styles from "./page.module.scss"
 import { useTransform, useScroll, motion } from "framer-motion"
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import Lenis from "@studio-freight/lenis";
 
 
 const images = [
@@ -29,6 +30,18 @@ export default function Home() {
     })
 
     const y = useTransform(scrollYProgress, [0, 1], [0, 1000])
+
+    //using lenis for smooth scroll
+    useEffect(() => {
+        const lenis = new Lenis()
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    }, [])
 
     return (
         <main className={styles.main}>
