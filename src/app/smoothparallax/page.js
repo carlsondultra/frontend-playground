@@ -21,11 +21,11 @@ export default function Home() {
     return (
         <main className={styles.main}>
             <div className={styles.gallery}>
+                {/* creating 4 columns with 3 images inside of them */}
                 <Column images={[images[0], images[1], images[2]]}/>
                 <Column images={[images[3], images[4], images[5]]}/>
                 <Column images={[images[6], images[7], images[8]]}/>
                 <Column images={[images[9], images[10], images[11]]}/>
-
             </div>
 
         </main>
