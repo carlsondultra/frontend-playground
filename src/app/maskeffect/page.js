@@ -30,7 +30,7 @@ export default function Home() {
       </motion.div>
 
       <div className={styles.body}>
-        <p>This is Different Different Different Different<span> Different Body</span> Text</p>
+        <p>Created using <span>Next.js</span> and <span>Framer Motion</span> </p>
       </div>
 
     </main>
