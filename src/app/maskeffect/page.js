@@ -10,12 +10,18 @@ export default function Home() {
 
   const [isHovered, setIsHovered] = useState(false);
   const { x, y } = useMousePosition();
-  const size = isHovered? 400 : 40; //changing mask size if hovered over text
+  const size = isHovered ? 400 : 40; //changing mask size if hovered over text
   return (
     <main className={styles.main}>
-
-      <Navbar />
-
+      <div className={styles.spacer}>
+        <Navbar />
+        <div className={styles.title}>
+          <h1>Mask Effect</h1>
+          <p>Created using Next.js, Framer Motion, HTML, and CSS</p>
+          <br></br>
+          <p>Scroll down to see effect</p>
+        </div>
+      </div>
       <motion.div
         className={styles.mask}
         animate={{
@@ -24,8 +30,8 @@ export default function Home() {
         }}
         transition={{ type: "tween", ease: "backOut" }}
       >
-        <p onMouseEnter={() => {setIsHovered(true)}} onMouseLeave={() => {setIsHovered(false)}}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..
+        <p onMouseEnter={() => { setIsHovered(true) }} onMouseLeave={() => { setIsHovered(false) }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..
         </p>
       </motion.div>
 
