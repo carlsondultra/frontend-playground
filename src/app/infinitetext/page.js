@@ -58,6 +58,7 @@ export default function Home() {
                 <div className={styles.title}>
                     <h1 className={styles.h1}>Infinite Moving Text</h1>
                     <p className={styles.p}>Created using Next.js and GSAP</p>
+                    <p className={styles.p}>Scroll down to change text direction</p>
                 </div>
                 <div ref={slider} className={styles.slider}>
                     {/* Repeated paragraphs in order to have infinite effect */}

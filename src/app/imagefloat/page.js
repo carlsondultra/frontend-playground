@@ -115,6 +115,8 @@ export default function Home() {
             <div className={styles.title}>
                 <h1>Floating Images Gallery</h1>
                 <p>Created using Next.js and GSAP</p>
+                <br></br>
+                <p>Move cursor around to see effect</p>
             </div>
         </main>
     )
