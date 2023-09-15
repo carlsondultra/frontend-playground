@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "@studio-freight/lenis": "^1.0.22",
     "eslint": "8.48.0",
