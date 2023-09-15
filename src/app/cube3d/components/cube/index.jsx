@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
-import { Canvas } from '@react-three/fiber'
+import React, { useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
 import styles from './style.module.scss'
 
 export default function index() {
@@ -16,8 +16,16 @@ export default function index() {
 }
 
 function Cube() {
+
+    const mesh = useRef(null);
+    useFrame( (state, delta) => {
+        mesh.current.rotation.x += delta * 0.25;
+        mesh.current.rotation.y += delta * 0.25;
+        mesh.current.rotation.z += delta * 0.25;
+    })
+
     return (
-        <mesh>
+        <mesh ref={mesh}>
             <boxGeometry args={[2.5, 2.5, 2.5]}/>
             <meshStandardMaterial color={"orange"}/>
         </mesh>
