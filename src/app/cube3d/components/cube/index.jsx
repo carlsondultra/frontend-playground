@@ -3,12 +3,14 @@
 import React, { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import styles from './style.module.scss'
+import '../../styles.css'
 
 export default function index() {
     return (
         <div className={styles.main}>
             <Canvas>
                 <ambientLight intensity={2}/>
+                <directionalLight position={[2, 1, 1]} />
                 <Cube />
             </Canvas>
         </div>
