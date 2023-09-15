@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useLoader } from '@react-three/fiber'
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import styles from './style.module.scss'
 import '../../styles.css'
 
@@ -26,10 +27,12 @@ function Cube() {
         mesh.current.rotation.z += delta * 0.25;
     })
 
+    const texture_1 = useLoader(TextureLoader, "/imagefloat/floating_1.jpg")
+
     return (
         <mesh ref={mesh}>
             <boxGeometry args={[2.5, 2.5, 2.5]}/>
-            <meshStandardMaterial color={"orange"}/>
+            <meshStandardMaterial map={texture_1}/>
         </mesh>
     )
 }
