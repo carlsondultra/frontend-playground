@@ -11,7 +11,8 @@ export default function index() {
     return (
         <div className={styles.main}>
             <Canvas>
-                <OrbitControls />
+                {/* disabling zooming and panning on cube */}
+                <OrbitControls enableZoom={false} enablePan={false}/>
                 <ambientLight intensity={2}/>
                 <directionalLight position={[2, 1, 1]} />
                 <Cube />
