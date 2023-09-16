@@ -10,7 +10,7 @@ export default function Navbar() {
         <li><a href="/infinitetext">Infinite Text</a></li>
         <li><a href="/smoothparallax">Smooth Parallax</a></li>
         <li><a href="/earth3d">3d Earth</a></li>
-        <li><a>Placeholder</a></li>
+        <li><a href="/cube3d">3d Cube</a></li>
         <li><a>Placeholder</a></li>
         <li><a>Placeholder</a></li>
         <li><a>Placeholder</a></li>
