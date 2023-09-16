@@ -28,11 +28,21 @@ function Cube() {
     })
 
     const texture_1 = useLoader(TextureLoader, "/imagefloat/floating_1.jpg")
+    const texture_2 = useLoader(TextureLoader, "/imagefloat/floating_2.jpg")
+    const texture_3 = useLoader(TextureLoader, "/imagefloat/floating_3.jpg")
+    const texture_4 = useLoader(TextureLoader, "/imagefloat/floating_4.jpg")
+    const texture_5 = useLoader(TextureLoader, "/imagefloat/floating_5.jpg")
+    const texture_6 = useLoader(TextureLoader, "/imagefloat/floating_6.jpg")
 
     return (
         <mesh ref={mesh}>
             <boxGeometry args={[2.5, 2.5, 2.5]}/>
-            <meshStandardMaterial map={texture_1}/>
+            <meshStandardMaterial map={texture_1} attach="material-0"/>
+            <meshStandardMaterial map={texture_2} attach="material-1"/>
+            <meshStandardMaterial map={texture_3} attach="material-2"/>
+            <meshStandardMaterial map={texture_4} attach="material-3"/>
+            <meshStandardMaterial map={texture_5} attach="material-4"/>
+            <meshStandardMaterial map={texture_6} attach="material-5"/>
         </mesh>
     )
 }
