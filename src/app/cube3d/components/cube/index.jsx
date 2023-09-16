@@ -1,11 +1,13 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import styles from './style.module.scss'
 import '../../styles.css'
 import { OrbitControls } from '@react-three/drei'
+import { useMotionValue, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion-3d'
 
 export default function index() {
     return (
@@ -24,11 +26,30 @@ export default function index() {
 function Cube() {
 
     const mesh = useRef(null);
-    useFrame( (state, delta) => {
-        mesh.current.rotation.x += delta * 0.25;
-        mesh.current.rotation.y += delta * 0.25;
-        mesh.current.rotation.z += delta * 0.25;
-    })
+
+    const options = {
+        damping: 20
+    }
+
+    const mouse = {
+        x: useSpring(useMotionValue(0), options),
+        y: useSpring(useMotionValue(0), options)
+    }
+
+    const manageMouseMove = (e) => {
+        const { innerWidth, innerHeight } = window;
+        const { clientX, clientY } = e;
+        const x = -0.5 + clientX / innerWidth
+        const y = -0.5 + clientY / innerHeight
+        mouse.x.set(x);
+        mouse.y.set(y)
+    }
+
+    useEffect(() => {
+        window.addEventListener("mousemove", manageMouseMove)
+
+        return () => window.removeEventListener("mouse", manageMouseMove)
+    }, [])
 
     const texture_1 = useLoader(TextureLoader, "/imagefloat/floating_1.jpg")
     const texture_2 = useLoader(TextureLoader, "/imagefloat/floating_2.jpg")
@@ -38,7 +59,7 @@ function Cube() {
     const texture_6 = useLoader(TextureLoader, "/imagefloat/floating_6.jpg")
 
     return (
-        <mesh ref={mesh}>
+        <motion.mesh ref={mesh} rotation-x={mouse.y} rotation-y={mouse.x}>
             <boxGeometry args={[2.5, 2.5, 2.5]}/>
             <meshStandardMaterial map={texture_1} attach="material-0"/>
             <meshStandardMaterial map={texture_2} attach="material-1"/>
@@ -46,6 +67,6 @@ function Cube() {
             <meshStandardMaterial map={texture_4} attach="material-3"/>
             <meshStandardMaterial map={texture_5} attach="material-4"/>
             <meshStandardMaterial map={texture_6} attach="material-5"/>
-        </mesh>
+        </motion.mesh>
     )
 }
