@@ -5,41 +5,44 @@ import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import styles from './style.module.scss'
 import '../../styles.css'
-import { OrbitControls, ScrollControls, useScroll } from '@react-three/drei'
-import { useMotionValue, useSpring } from 'framer-motion'
+import { OrbitControls } from '@react-three/drei'
+import { useMotionValue, useSpring, useScroll, useTransform } from 'framer-motion'
 import { motion } from 'framer-motion-3d'
 
 export default function index() {
+
+    const container = useRef(null)
+
+    const { scrollYProgress} = useScroll({
+        target: container,
+        offset: ['start start', 'end end']
+    })
+
+    const progress = useTransform(scrollYProgress, [0, 1], [0, 5])
+    const smoothProgress = useSpring(progress, {damping: 20})
+
     return (
-        <div className={styles.main}>
-            <Canvas>
-                <ScrollControls pages={5}>
+        <div ref={container} className={styles.main}>
+            <div className={styles.cube}>
+                <Canvas>
                     {/* disabling zooming and panning on cube */}
                     <OrbitControls enableZoom={false} enablePan={false} />
                     <ambientLight intensity={2} />
                     <directionalLight position={[2, 1, 1]} />
-                    <Cube />
-                </ScrollControls>
-            </Canvas>
+                    <Cube progress={smoothProgress}/>
+                </Canvas>
+            </div>
         </div>
     )
 }
 
-function Cube() {
+function Cube({progress}) {
 
     const mesh = useRef(null);
-    const data = useScroll();
 
-    useFrame( (state, delta) => {
-        const { offset } = data;
-        mesh.current.rotation.x = offset * 5;
-        mesh.current.rotation.y = offset * 5;
-        mesh.current.rotation.z = offset * 5;
-    })
-
-    // const options = {
-    //     damping: 20
-    // }
+    const options = {
+        damping: 20
+    }
 
     // const mouse = {
     //     x: useSpring(useMotionValue(0), options),
@@ -69,7 +72,7 @@ function Cube() {
     const texture_6 = useLoader(TextureLoader, "/imagefloat/floating_6.jpg")
 
     return (
-        <motion.mesh ref={mesh}>
+        <motion.mesh ref={mesh} rotation-y={progress} rotation-x={progress}>
             <boxGeometry args={[2.5, 2.5, 2.5]} />
             <meshStandardMaterial map={texture_1} attach="material-0" />
             <meshStandardMaterial map={texture_2} attach="material-1" />
