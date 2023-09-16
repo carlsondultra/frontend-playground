@@ -5,11 +5,13 @@ import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import styles from './style.module.scss'
 import '../../styles.css'
+import { OrbitControls } from '@react-three/drei'
 
 export default function index() {
     return (
         <div className={styles.main}>
             <Canvas>
+                <OrbitControls />
                 <ambientLight intensity={2}/>
                 <directionalLight position={[2, 1, 1]} />
                 <Cube />
